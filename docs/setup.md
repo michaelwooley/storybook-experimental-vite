@@ -142,6 +142,10 @@ npx sb@next init
 
 Pinning vite version to 2.9.6 due to: https://github.com/storybookjs/builder-vite/pull/394
 
+```bash
+npm i vite@2.9.6
+```
+
 # Local system info
 
 ```bash

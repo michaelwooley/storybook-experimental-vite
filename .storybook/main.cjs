@@ -7,7 +7,7 @@ module.exports = {
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
 		'@storybook/addon-interactions'
-		// '@storybook/addon-svelte-csf' // Expected to work?
+		// '@storybook/addon-svelte-csf' // Ought to work but simplify for now.
 	],
 	framework: '@storybook/svelte',
 	core: {
