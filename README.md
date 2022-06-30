@@ -1,11 +1,8 @@
 # storybook-experimental-vite
 
-**Goal:** Easy storybook setup for sveltekit apps.
-
----
-
+- **Goal:** Easy storybook setup for sveltekit apps.
 - Use `vite.config.js` instead of specifying vite config as part of `svelte.config.js` (https://github.com/sveltejs/kit/issues/5184).
-
+- **Next steps.** Work out a mocking strategy for aliased imports. Could be relatively rich. Can work out reasonable substitutes for use in `.svelte-kit/runtime/client/start.js#start`? (https://github.com/michaelwooley/storybook-experimental-vite/issues/3)
 
 What works, what doesn't, and what hasn't been attempted:
 
@@ -22,7 +19,7 @@ What works, what doesn't, and what hasn't been attempted:
 Open questions:
 
 - Vite 3 support? Is it important? Do we need to pin to vite 2 for now? (https://github.com/storybookjs/builder-vite/pull/394)
-- Importance of adapters? I don't think that adapters matter at all for what shows up in the `.svelte-kit` dir, right? Only the contents of the `build` dir are affected?
+- Importance of adapters? I don't think that adapters matter at all for what shows up in the `.svelte-kit/runtime` dir, right? Only the contents of the `.svelte-kit/build` dir are affected?
 
 # Quick start
 
