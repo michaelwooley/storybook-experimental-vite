@@ -134,6 +134,11 @@ EOF
 
 **Notice** that the default port has been changed to 5000 in order to see if the normal `svelte-kit dev` command picks up on the separate vite config file.
 
+## Add storybook
+
+```bash
+npx sb@next init
+```
 
 # Local system info
 
