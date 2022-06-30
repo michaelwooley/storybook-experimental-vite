@@ -31,10 +31,11 @@ module.exports = {
 		const { config: userConfig } = await loadConfigFromFile(
 			path.resolve(__dirname, "../vite.config.js")
 		);
-		// Remove Svelte plugins added by Storybook plugin so SvelteKit plugins don't duplicate them
-		config.plugins = config.plugins.flat(10).filter(p => !p.name.startsWith('vite-plugin-svelte'));
+		const svelteKitPlugin = userConfig.plugins.flat(10).find(p => p.name === 'vite-plugin-svelte-kit')
 		return mergeConfig(config, {
 			...userConfig,
+			// manually specify plugins to avoid duplicates
+			plugins: [ svelteKitPlugin ],
 			server: {
 				fs: {
 					allow: ['.storybook']
