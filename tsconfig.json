@@ -9,5 +9,10 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true
+		// "paths": {
+		// 	"$app/*": [".svelte-kit/runtime/app/*"]
+		// }
 	}
+	// "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.svelte", ".svelte-kit/**/*.js"],
+	// "exclude": ["node_modules/**"]
 }

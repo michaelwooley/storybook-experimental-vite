@@ -138,6 +138,10 @@ EOF
 npx sb@next init
 ```
 
+## Vite 3?
+
+Pinning vite version to 2.9.6 due to: https://github.com/storybookjs/builder-vite/pull/394
+
 # Local system info
 
 ```bash

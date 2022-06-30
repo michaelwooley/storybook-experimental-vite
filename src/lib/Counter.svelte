@@ -34,11 +34,11 @@
 	</button>
 </div>
 
-<style>
+<style lang="css">
 	.counter {
 		display: flex;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: 24px solid red;
 		margin: 1rem 0;
 	}
 
