@@ -146,6 +146,10 @@ Pinning vite version to 2.9.6 due to: https://github.com/storybookjs/builder-vit
 npm i vite@2.9.6
 ```
 
+## Adapter static?
+
+...try it? 🤷
+
 # Local system info
 
 ```bash
@@ -155,13 +159,13 @@ npx envinfo --system --binaries --browsers --npmPackages "{svelte,@sveltejs/*,vi
 
 ```bash
 ❯ date
-Wed Jun 29 11:01:36 PM EDT 2022
+Thu Jun 30 02:52:07 AM EDT 2022
 ❯ npx envinfo --system --binaries --browsers --npmPackages "{svelte,@sveltejs/*,vite}"
 
   System:
     OS: Linux 5.10 Manjaro Linux
     CPU: (8) x64 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
-    Memory: 2.71 GB / 15.34 GB
+    Memory: 1.87 GB / 15.34 GB
     Container: Yes
     Shell: 5.9 - /usr/bin/zsh
   Binaries:
@@ -174,6 +178,8 @@ Wed Jun 29 11:01:36 PM EDT 2022
     Firefox: 101.0.1
   npmPackages:
     @sveltejs/adapter-auto: next => 1.0.0-next.53
+    @sveltejs/adapter-static: ^1.0.0-next.34 => 1.0.0-next.34
     @sveltejs/kit: next => 1.0.0-next.357
-    svelte: ^3.46.0 => 3.48.0
+    svelte: ^3.48.0 => 3.48.0
+    vite: 2.9.6 => 2.9.6
 ```
