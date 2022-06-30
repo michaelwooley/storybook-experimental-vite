@@ -2,6 +2,8 @@
 
 # Init steps
 
+## Project init
+
 ```bash
 npm create svelte@latest storybook-experimental-vite
 cd storybook-experimental-vite
@@ -111,6 +113,26 @@ Initialized empty Git repository in /home/michael/Documents/misc/storybook-exper
  create mode 100644 tests/test.ts
  create mode 100644 tsconfig.json
 ```
+
+
+## Substitute `vite.config.js` for `svelte.config.js`
+
+```bash
+cat << EOF > vite.config.js
+import { sveltekit } from '@sveltejs/kit/experimental/vite';
+
+/** @type {import('vite').UserConfig} */
+export default {
+	plugins: [sveltekit()],
+
+	server: {
+		port: 5000 // For demo purposes only
+	}
+};
+EOF
+```
+
+**Notice** that the default port has been changed to 5000 in order to see if the normal `svelte-kit dev` command picks up on the separate vite config file.
 
 
 # Local system info
