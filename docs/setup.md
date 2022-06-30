@@ -19,7 +19,6 @@ Creation option choices:
 - _Add Prettier for code formatting?_ … Yes
 - _Add Playwright for browser testing?_ … Yes
 
-
 ```bash
 ❯ npm create svelte@latest storybook-experimental-vite
 Need to install the following packages:
@@ -114,7 +113,6 @@ Initialized empty Git repository in /home/michael/Documents/misc/storybook-exper
  create mode 100644 tsconfig.json
 ```
 
-
 ## Substitute `vite.config.js` for `svelte.config.js`
 
 ```bash
@@ -134,6 +132,11 @@ EOF
 
 **Notice** that the default port has been changed to 5000 in order to see if the normal `svelte-kit dev` command picks up on the separate vite config file.
 
+## Add storybook
+
+```bash
+npx sb@next init
+```
 
 # Local system info
 
