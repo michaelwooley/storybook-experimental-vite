@@ -32,9 +32,6 @@ To try to run storybook with the current repo:
 git clone git@github.com:michaelwooley/storybook-experimental-vite.git
 cd storybook-experimental-vite
 npm i
-
-npm run build # Need to build for storybook
-
 npm run storybook
 ```
 
