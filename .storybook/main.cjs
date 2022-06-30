@@ -1,5 +1,6 @@
 const preprocess = require('svelte-preprocess');
 const path = require('path');
+const { loadConfigFromFile, mergeConfig } = require('vite');
 
 module.exports = {
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
@@ -26,17 +27,19 @@ module.exports = {
 		experimental: { inspector: false }
 	},
 
-	async viteFinal(config) {
-		config.resolve.alias = {
-			...(config.resolve.alias || {}),
-			...{
-				$app: path.resolve('./.svelte-kit/runtime/app'),
-				$lib: path.resolve('./src/lib')
+	async viteFinal(config, { configType }) {
+		const { config: userConfig } = await loadConfigFromFile(
+			path.resolve(__dirname, "../vite.config.js")
+		);
+		// Remove Svelte plugins added by Storybook plugin so SvelteKit plugins don't duplicate them
+		config.plugins = config.plugins.flat(10).filter(p => !p.name.startsWith('vite-plugin-svelte'));
+		return mergeConfig(config, {
+			...userConfig,
+			server: {
+				fs: {
+					allow: ['.storybook']
+				}
 			}
-		};
-		config.server.fs.strict = false;
-		config.server.fs.allow = ['.'];
-		// Merge custom configuration into the default config
-		return config;
-	}
+		});
+  	}
 };
