@@ -200,13 +200,13 @@ npx envinfo --system --binaries --browsers --npmPackages "{svelte,@sveltejs/*,vi
 
 ```bash
 ❯ date
-Thu Jun 30 02:52:07 AM EDT 2022
-❯ npx envinfo --system --binaries --browsers --npmPackages "{svelte,@sveltejs/*,vite}"
+Fri Jul  1 01:25:15 PM EDT 2022
+❯ npx envinfo --system --binaries --browsers --npmPackages "{svelte,@sveltejs/*,vite,@storybook/*}"
 
   System:
     OS: Linux 5.10 Manjaro Linux
     CPU: (8) x64 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
-    Memory: 1.87 GB / 15.34 GB
+    Memory: 285.49 MB / 15.34 GB
     Container: Yes
     Shell: 5.9 - /usr/bin/zsh
   Binaries:
@@ -216,13 +216,21 @@ Thu Jun 30 02:52:07 AM EDT 2022
   Browsers:
     Brave Browser: 103.1.40.107
     Chromium: 103.0.5060.53
-    Firefox: 101.0.1
+    Firefox: 102.0
   npmPackages:
-    @sveltejs/adapter-auto: next => 1.0.0-next.53
-    @sveltejs/adapter-static: ^1.0.0-next.34 => 1.0.0-next.34
-    @sveltejs/kit: next => 1.0.0-next.357
-    svelte: ^3.48.0 => 3.48.0
-    vite: 2.9.6 => 2.9.6
+    @storybook/addon-actions: ^6.5.9 => 6.5.9 
+    @storybook/addon-essentials: ^6.5.9 => 6.5.9 
+    @storybook/addon-interactions: ^6.5.9 => 6.5.9 
+    @storybook/addon-links: ^6.5.9 => 6.5.9 
+    @storybook/addon-svelte-csf: ^2.0.4 => 2.0.4 
+    @storybook/builder-vite: ^0.1.38 => 0.1.38 
+    @storybook/svelte: ^6.5.9 => 6.5.9 
+    @storybook/testing-library: ^0.0.13 => 0.0.13 
+    @sveltejs/adapter-auto: next => 1.0.0-next.53 
+    @sveltejs/adapter-static: ^1.0.0-next.34 => 1.0.0-next.34 
+    @sveltejs/kit: next => 1.0.0-next.357 
+    svelte: ^3.48.0 => 3.48.0 
+    vite: 2.9.6 => 2.9.6 
 ```
 
 # Links
