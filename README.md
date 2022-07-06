@@ -2,6 +2,7 @@
 
 - **Goal:** Easy storybook setup for sveltekit apps.
 - **What should make this work now?** Use `vite.config.js` instead of specifying vite config as part of `svelte.config.js` (https://github.com/sveltejs/kit/issues/5184).
+- **Next steps.** Work out a mocking strategy for aliased imports. Could be relatively rich. Can work out reasonable substitutes for use in `.svelte-kit/runtime/client/start.js#start`? (https://github.com/michaelwooley/storybook-experimental-vite/issues/3)
 
 What works, what doesn't, and what hasn't been attempted:
 
