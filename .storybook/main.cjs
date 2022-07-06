@@ -23,8 +23,7 @@ module.exports = {
 		storyStoreV7: false
 	},
 	svelteOptions: {
-		preprocess: preprocess(), // necessary to work currently. But does that mean that other stuff is ignored?
-		experimental: { inspector: false }
+		preprocess: preprocess() // necessary to work currently, but that means that vite-plugin-svelte config is ignored
 	},
 
 	async viteFinal(config, { configType }) {
