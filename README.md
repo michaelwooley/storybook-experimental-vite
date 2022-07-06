@@ -147,25 +147,6 @@ Initialized empty Git repository in /home/michael/Documents/misc/storybook-exper
  create mode 100644 tsconfig.json
 ```
 
-## Substitute `vite.config.js` for `svelte.config.js`
-
-```bash
-cat << EOF > vite.config.js
-import { sveltekit } from '@sveltejs/kit/experimental/vite';
-
-/** @type {import('vite').UserConfig} */
-export default {
-	plugins: [sveltekit()],
-
-	server: {
-		port: 5000 // For demo purposes only
-	}
-};
-EOF
-```
-
-**Notice** that the default port has been changed to 5000 in order to see if the normal `svelte-kit dev` command picks up on the separate vite config file.
-
 ## Add storybook
 
 ```bash
@@ -174,10 +155,10 @@ npx sb@next init
 
 ## Vite 3?
 
-Pinning vite version to 2.9.6 due to: https://github.com/storybookjs/builder-vite/pull/394
+Using Vite 2 until: https://github.com/storybookjs/builder-vite/pull/394
 
 ```bash
-npm i vite@2.9.6
+npm install --save vite
 ```
 
 ## Adapter static?
