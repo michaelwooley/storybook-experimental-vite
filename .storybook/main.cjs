@@ -7,8 +7,8 @@ module.exports = {
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
-		'@storybook/addon-interactions'
-		// '@storybook/addon-svelte-csf' // Ought to work but simplify for now.
+		'@storybook/addon-interactions',
+		'@storybook/addon-svelte-csf'
 	],
 	framework: '@storybook/svelte',
 	core: {
@@ -22,6 +22,7 @@ module.exports = {
 		// REFERENCE https://storybook.js.org/docs/svelte/configure/overview#feature-flags
 		storyStoreV7: false
 	},
+	// TODO: remove after https://github.com/storybookjs/builder-vite/pull/428
 	svelteOptions: {
 		preprocess: preprocess() // necessary to work currently, but that means that vite-plugin-svelte config is ignored
 	},
@@ -36,6 +37,7 @@ module.exports = {
 		return mergeConfig(config, {
 			...userConfig,
 			plugins,
+			// TODO: remove after https://github.com/storybookjs/builder-vite/pull/427
 			server: {
 				fs: {
 					allow: ['.storybook']
