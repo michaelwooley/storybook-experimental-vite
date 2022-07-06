@@ -7,7 +7,11 @@ What works, what doesn't, and what hasn't been attempted:
 
 - 🟢 Basic storybook init/demo stories. (Requires minor tweaks to filenames.)
 - 🟢 Typescript (components and stories)
-- 🟢 Aliased imports. E.g. `$app`, `$lib`, etc.
+- 🟡 Aliased imports. E.g. `$app/stores`. _Once the aliases are added,_ then some of these will work.
+  - 🟢 `$app/env` Variables _are_ set. Notable because they make use of `import.meta.env`.
+  - 🟢 `$app/paths` Can be imported but these are unset. (Need to call `set_paths` fn.)
+  - 🔴 `$app/navigation`. Closely linked to app state. I think it makes sense that these don't work. Nothing has been done to initialize them. Quick check uncommenting [some lines in `Header.svelte`](https://github.com/michaelwooley/storybook-experimental-vite/blob/a4abb8ca37b70f861ef5cb6e524a60811b6dc4fe/src/lib/header/Header.svelte#L5-L13). Probably need to pursue some version of a [mocking strategy](https://github.com/storybookjs/storybook/issues/14952#issuecomment-1023188255).
+  - 🔴 `$app/stores` Similar story. `$app/stores` will import okay but it will throw an error if you try to fetch the store values. This lack of functionality can actually help devs to be deliberate about application state.
 - ❓ Tailwind, etc. (I don't think this should be much of a problem.)
 - 🟢 Stories that are `*.stories.svelte` files (via `@storybook/addon-svelte-csf`). This appears to work just fine. I did swap out these stories for less-fancy stories just to see if this package was introducing any additional complications/limitations. (Related: https://github.com/storybookjs/storybook/issues/14952#issuecomment-862043558)
 
