@@ -1,5 +1,6 @@
 const preprocess = require('svelte-preprocess');
 const path = require('path');
+const { loadConfigFromFile, mergeConfig } = require('vite');
 
 module.exports = {
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
@@ -22,21 +23,24 @@ module.exports = {
 		storyStoreV7: false
 	},
 	svelteOptions: {
-		preprocess: preprocess(), // necessary to work currently. But does that mean that other stuff is ignored?
-		experimental: { inspector: false }
+		preprocess: preprocess() // necessary to work currently, but that means that vite-plugin-svelte config is ignored
 	},
 
-	async viteFinal(config) {
-		config.resolve.alias = {
-			...(config.resolve.alias || {}),
-			...{
-				$app: path.resolve('./.svelte-kit/runtime/app'),
-				$lib: path.resolve('./src/lib')
+	async viteFinal(config, { configType }) {
+		const { config: userConfig } = await loadConfigFromFile(
+			path.resolve(__dirname, "../vite.config.js")
+		);
+		// Remove Svelte plugins that would duplicate those added by the Storybook plugin
+		const plugins = userConfig.plugins.flat(1)
+			.filter(p => !p.name.startsWith('vite-plugin-svelte') || p.name === 'vite-plugin-svelte-kit');
+		return mergeConfig(config, {
+			...userConfig,
+			plugins,
+			server: {
+				fs: {
+					allow: ['.storybook']
+				}
 			}
-		};
-		config.server.fs.strict = false;
-		config.server.fs.allow = ['.'];
-		// Merge custom configuration into the default config
-		return config;
-	}
+		});
+  	}
 };

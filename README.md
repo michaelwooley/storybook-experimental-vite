@@ -2,9 +2,6 @@
 
 - **Goal:** Easy storybook setup for sveltekit apps.
 - **What should make this work now?** Use `vite.config.js` instead of specifying vite config as part of `svelte.config.js` (https://github.com/sveltejs/kit/issues/5184).
-- **Present state.**
-  - A lot of stuff works...
-  - ...But it seems like I'm missing something: It reads like the introduction of a standalone `vite.config.js` should make things much simpler. But I'm still doing a lot of tinkering. That makes me think that I'm over-complicating this in some way.
 - **Next steps.** Work out a mocking strategy for aliased imports. Could be relatively rich. Can work out reasonable substitutes for use in `.svelte-kit/runtime/client/start.js#start`? (https://github.com/michaelwooley/storybook-experimental-vite/issues/3)
 
 What works, what doesn't, and what hasn't been attempted:
@@ -14,8 +11,8 @@ What works, what doesn't, and what hasn't been attempted:
 - 🟡 Aliased imports. E.g. `$app/stores`. _Once the aliases are added,_ then some of these will work.
   - 🟢 `$app/env` Variables _are_ set. Notable because they make use of `import.meta.env`.
   - 🟢 `$app/paths` Can be imported but these are unset. (Need to call `set_paths` fn.)
-  - 🔴 `$app/navigation`. Closely linked to app state. Probably need to pursue some version of a [mocking strategy](https://github.com/storybookjs/storybook/issues/14952#issuecomment-1023188255).
-  - 🔴 `$app/stores` Similar story
+  - 🔴 `$app/navigation`. Closely linked to app state. I think it makes sense that these don't work. Nothing has been done to initialize them. Quick check uncommenting [some lines in `Header.svelte`](https://github.com/michaelwooley/storybook-experimental-vite/blob/a4abb8ca37b70f861ef5cb6e524a60811b6dc4fe/src/lib/header/Header.svelte#L5-L13). Probably need to pursue some version of a [mocking strategy](https://github.com/storybookjs/storybook/issues/14952#issuecomment-1023188255).
+  - 🔴 `$app/stores` Similar story. `$app/stores` will import okay but it will throw an error if you try to fetch the store values. This lack of functionality can actually help devs to be deliberate about application state.
 - ❓ Tailwind, etc. (I don't think this should be much of a problem.)
 - 🟢 Stories that are `*.stories.svelte` files (via `@storybook/addon-svelte-csf`). This appears to work just fine. I did swap out these stories for less-fancy stories just to see if this package was introducing any additional complications/limitations. (Related: https://github.com/storybookjs/storybook/issues/14952#issuecomment-862043558)
 
@@ -32,9 +29,6 @@ To try to run storybook with the current repo:
 git clone git@github.com:michaelwooley/storybook-experimental-vite.git
 cd storybook-experimental-vite
 npm i
-
-npm run build # Need to build for storybook
-
 npm run storybook
 ```
 
@@ -154,25 +148,6 @@ Initialized empty Git repository in /home/michael/Documents/misc/storybook-exper
  create mode 100644 tsconfig.json
 ```
 
-## Substitute `vite.config.js` for `svelte.config.js`
-
-```bash
-cat << EOF > vite.config.js
-import { sveltekit } from '@sveltejs/kit/experimental/vite';
-
-/** @type {import('vite').UserConfig} */
-export default {
-	plugins: [sveltekit()],
-
-	server: {
-		port: 5000 // For demo purposes only
-	}
-};
-EOF
-```
-
-**Notice** that the default port has been changed to 5000 in order to see if the normal `svelte-kit dev` command picks up on the separate vite config file.
-
 ## Add storybook
 
 ```bash
@@ -181,10 +156,10 @@ npx sb@next init
 
 ## Vite 3?
 
-Pinning vite version to 2.9.6 due to: https://github.com/storybookjs/builder-vite/pull/394
+Using Vite 2 until: https://github.com/storybookjs/builder-vite/pull/394
 
 ```bash
-npm i vite@2.9.6
+npm install --save vite
 ```
 
 ## Adapter static?
