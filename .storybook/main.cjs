@@ -36,13 +36,7 @@ module.exports = {
 			.filter(p => !p.name.startsWith('vite-plugin-svelte') || p.name === 'vite-plugin-svelte-kit');
 		return mergeConfig(config, {
 			...userConfig,
-			plugins,
-			// TODO: remove after https://github.com/storybookjs/builder-vite/pull/427
-			server: {
-				fs: {
-					allow: ['.storybook']
-				}
-			}
+			plugins
 		});
   	}
 };
