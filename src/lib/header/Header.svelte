@@ -1,5 +1,5 @@
 <script>
-	// import { page } from '$app/stores';
+	import { session } from '$app/stores';
 	import { browser, dev, mode, prod, server } from '$app/env';
 	import { assets, base } from '$app/paths';
 	// import {
@@ -15,6 +15,9 @@
 
 	console.log({ browser, dev, mode, prod, server });
 	console.log({ assets, base });
+
+	console.log(`session ${session}`);
+	console.log(`$session ${$session}`);
 </script>
 
 <header>
