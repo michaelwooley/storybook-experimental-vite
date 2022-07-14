@@ -12,21 +12,14 @@ module.exports = {
 	],
 	framework: '@storybook/svelte',
 	core: {
-		builder: '@storybook/builder-vite',
-		disableTelemetry: true
+		builder: '@storybook/builder-vite'
 	},
-
 	features: {
 		// On-demand store does not work for .svelte stories, only CSF.
 		// Requires all stories to be loaded in bulk.
 		// REFERENCE https://storybook.js.org/docs/svelte/configure/overview#feature-flags
 		storyStoreV7: false
 	},
-	// TODO: remove after https://github.com/storybookjs/builder-vite/pull/428
-	svelteOptions: {
-		preprocess: preprocess() // necessary to work currently, but that means that vite-plugin-svelte config is ignored
-	},
-
 	async viteFinal(config, { configType }) {
 		const { config: userConfig } = await loadConfigFromFile(
 			path.resolve(__dirname, "../vite.config.js")
