@@ -1,6 +1,6 @@
 <script>
 	// import { page } from '$app/stores';
-	import { browser, dev, mode, prod, server } from '$app/env';
+	import { browser, dev } from '$app/env';
 	import { assets, base } from '$app/paths';
 	// import {
 	// 	afterNavigate,
@@ -13,7 +13,7 @@
 	// } from '$app/navigation';
 	import logo from './svelte-logo.svg';
 
-	console.log({ browser, dev, mode, prod, server });
+	console.log({ browser, dev });
 	console.log({ assets, base });
 </script>
 
